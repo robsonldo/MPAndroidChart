@@ -53,5 +53,4 @@
         <activity android:name="FilledLineActivity" />
         <activity android:name="HalfPieChartActivity" />
     </application>
-
 </manifest>
