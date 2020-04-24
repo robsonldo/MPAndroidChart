@@ -12,6 +12,7 @@ import android.view.WindowManager;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -88,6 +89,26 @@ public class LineChartActivityColored extends DemoBase {
         // add data
         chart.setData(data);
 
+        LimitLine ll1 = new LimitLine(80f, "Upper Limit");
+        ll1.setLineWidth(4f);
+        ll1.enableDashedLine(10f, 10f, 0f);
+        ll1.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_TOP);
+        ll1.setTextSize(10f);
+        ll1.setTypeface(tfRegular);
+
+        LimitLine ll2 = new LimitLine(-30f, "Lower Limit");
+        ll2.setLineWidth(4f);
+        ll2.enableDashedLine(10f, 10f, 0f);
+        ll2.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOTTOM);
+        ll2.setTextSize(10f);
+        ll2.setTypeface(tfRegular);
+
+        chart.getAxisLeft().setDrawGridLines(false);
+        chart.getAxisLeft().setDrawLimitLinesBehindData(true);
+
+        chart.getAxisLeft().addLimitLine(ll1);
+        chart.getAxisLeft().addLimitLine(ll2);
+
         // get the legend (only possible after setting data)
         Legend l = chart.getLegend();
         l.setEnabled(false);
@@ -97,6 +118,9 @@ public class LineChartActivityColored extends DemoBase {
         chart.getAxisLeft().setSpaceBottom(40);
         chart.getAxisRight().setEnabled(false);
 
+        chart.getXAxis().setLimitLineForceDrawEnabled(true);
+        chart.getAxisLeft().setLimitLineForceDrawEnabled(true);
+        chart.getAxisRight().setLimitLineForceDrawEnabled(true);
         chart.getXAxis().setEnabled(false);
 
         // animate calls invalidate()...

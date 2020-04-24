@@ -223,14 +223,20 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
         if (mAxisRight.isDrawGridLinesBehindDataEnabled())
             mAxisRendererRight.renderGridLines(canvas);
 
-        if (mXAxis.isEnabled() && mXAxis.isDrawLimitLinesBehindDataEnabled())
+        if (mXAxis.isEnabled() && mXAxis.isDrawLimitLinesBehindDataEnabled()
+                || mXAxis.isLimitLineForceDrawEnabled()) {
             mXAxisRenderer.renderLimitLines(canvas);
+        }
 
-        if (mAxisLeft.isEnabled() && mAxisLeft.isDrawLimitLinesBehindDataEnabled())
+        if (mAxisLeft.isEnabled() && mAxisLeft.isDrawLimitLinesBehindDataEnabled()
+                || mXAxis.isLimitLineForceDrawEnabled()) {
             mAxisRendererLeft.renderLimitLines(canvas);
+        }
 
-        if (mAxisRight.isEnabled() && mAxisRight.isDrawLimitLinesBehindDataEnabled())
+        if (mAxisRight.isEnabled() && mAxisRight.isDrawLimitLinesBehindDataEnabled()
+                || mXAxis.isLimitLineForceDrawEnabled()) {
             mAxisRendererRight.renderLimitLines(canvas);
+        }
 
         int clipRestoreCount = canvas.save();
 
@@ -259,14 +265,20 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
 
         mRenderer.drawExtras(canvas);
 
-        if (mXAxis.isEnabled() && !mXAxis.isDrawLimitLinesBehindDataEnabled())
+        if (mXAxis.isEnabled() && !mXAxis.isDrawLimitLinesBehindDataEnabled()
+                || mXAxis.isLimitLineForceDrawEnabled()) {
             mXAxisRenderer.renderLimitLines(canvas);
+        }
 
-        if (mAxisLeft.isEnabled() && !mAxisLeft.isDrawLimitLinesBehindDataEnabled())
+        if (mAxisLeft.isEnabled() && !mAxisLeft.isDrawLimitLinesBehindDataEnabled()
+                || mXAxis.isLimitLineForceDrawEnabled()) {
             mAxisRendererLeft.renderLimitLines(canvas);
+        }
 
-        if (mAxisRight.isEnabled() && !mAxisRight.isDrawLimitLinesBehindDataEnabled())
+        if (mAxisRight.isEnabled() && !mAxisRight.isDrawLimitLinesBehindDataEnabled()
+                || mXAxis.isLimitLineForceDrawEnabled()) {
             mAxisRendererRight.renderLimitLines(canvas);
+        }
 
         mXAxisRenderer.renderAxisLabels(canvas);
         mAxisRendererLeft.renderAxisLabels(canvas);

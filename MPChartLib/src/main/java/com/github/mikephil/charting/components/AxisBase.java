@@ -112,6 +112,11 @@ public abstract class AxisBase extends ComponentBase {
     protected boolean mDrawLimitLineBehindData = false;
 
     /**
+     * flag indicating the limit lines layer depth
+     */
+    protected boolean mLimitLineForceDraw = false;
+
+    /**
      * flag indicating the grid lines layer depth
      */
     protected boolean mDrawGridLinesBehindData = true;
@@ -477,8 +482,16 @@ public abstract class AxisBase extends ComponentBase {
         mDrawLimitLineBehindData = enabled;
     }
 
+    public void setLimitLineForceDrawEnabled(boolean enabled) {
+        mLimitLineForceDraw = enabled;
+    }
+
     public boolean isDrawLimitLinesBehindDataEnabled() {
         return mDrawLimitLineBehindData;
+    }
+
+    public boolean isLimitLineForceDrawEnabled() {
+        return mLimitLineForceDraw;
     }
 
     /**
